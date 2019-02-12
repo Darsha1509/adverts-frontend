@@ -1,6 +1,19 @@
-export const GET_ADVERTS = 'GET_ADVERTS';
+export const SESSION_API_URL = "http://localhost:3001";
 
-export const GET_USERS = 'GET_USERS';
-export const SET_USER = 'SET_USER';
+const CATEGORIES = [
+  "Select category",
+  "The property",
+  "Auto and transport",
+  "Equipment",
+  "Fashion and Style",
+  "Everything for children and mothers",
+  "Housing",
+  "Repair and construction",
+  "Garden",
+  "Hobby, sport and tourism",
+  "Wedding, business and study",
+  "Services",
+  "Other"
+];
 
-export const SESSION_API_URL = 'http://localhost:3001';
+export default CATEGORIES;

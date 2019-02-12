@@ -1,4 +1,4 @@
-import {SET_USER, GET_USERS} from "../constants";
+import {SET_USER, GET_USERS} from "../constants/actions";
 import * as usersApi from "../services/api/users";
 
 export function setUser(user) {
@@ -6,7 +6,9 @@ export function setUser(user) {
     dispatch({ type: SET_USER });
 
     usersApi.setUser(user)
-      .then((user) => dispatch({ type: SET_USER, payload: { user } }))
+      .then((user) => {
+        dispatch({ type: SET_USER, payload: { user } })
+      })
       .catch(error => dispatch({ type: SET_USER, payload: { error } }));
   }
 }

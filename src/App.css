@@ -56,11 +56,6 @@ p {
   color: #999;
 }
 
-.menu {
-  display: flex;
-  justify-content: space-around;
-}
-
 .menu-item {
   list-style-type: none;
 }

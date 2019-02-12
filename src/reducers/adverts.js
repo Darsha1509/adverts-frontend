@@ -1,31 +1,46 @@
-import {GET_ADVERTS} from "../constants";
+import { GET_ADVERTS, SET_ADVERT } from "../constants/actions";
 
 const initialState = {
-  items: [],
-  loading: false, // изначально статус загрузки - ложь
-  error: null,
-  // так как он станет true, когда запрос начнет выполнение
+  adverts: { data: [], loading: false, error: null },
+  advert: { data: {}, loading: false, error: null }
 };
 
 export function advertsReducer(state = initialState, action) {
+  const payload = action.payload;
   switch (action.type) {
     case GET_ADVERTS:
-      const payload = action.payload;
-
       if (!payload) {
-        return {...state, loading: true}
+        return { ...state, adverts: {loading: true} };
       }
 
       if (payload.error) {
-        return { ...state, loading: false, error: payload.error }
+        return { ...state, adverts: {loading: false, error: payload.error} };
+      }
+      if (payload.adverts) {
+        return {
+          ...state,
+          adverts: { loading: false, error: null, data: payload.adverts }
+        };
+      }
+      break;
+
+    case SET_ADVERT:
+      if (!payload) {
+        return { ...state, advert: {loading: true} };
       }
 
-      if (payload.adverts) {
-        return { ...state, loading: false, error: null, items: payload.adverts }
+      if (payload.error) {
+        return { ...state, advert: {loading: false, error: payload.error} };
       }
-      return {...state};
+      if (payload.advert) {
+        return {
+          ...state,
+          advert: { loading: false, error: null, data: payload.advert }
+        };
+      }
+      break;
 
     default:
-      return state
+      return state;
   }
 }

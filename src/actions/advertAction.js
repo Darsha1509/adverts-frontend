@@ -1,4 +1,4 @@
-import { GET_ADVERTS } from "../constants";
+import { GET_ADVERTS, SET_ADVERT } from '../constants/actions';
 import * as advertsApi from "../services/api/adverts";
 
 export function getAdverts(targetAdverts) {
@@ -12,4 +12,14 @@ export function getAdverts(targetAdverts) {
       .then(adverts => dispatch({ type: GET_ADVERTS, payload: { adverts } }))
       .catch(error => dispatch({ type: GET_ADVERTS, payload: { error } }));
   };
+}
+
+export function setAdvert(advert) {
+  return dispatch => {
+    dispatch({ type: SET_ADVERT });
+
+    advertsApi.setAdvert(advert)
+      .then((advert) => dispatch({ type: SET_ADVERT, payload: { advert } }))
+      .catch(error => dispatch({ type: SET_ADVERT, payload: { error } }));
+  }
 }

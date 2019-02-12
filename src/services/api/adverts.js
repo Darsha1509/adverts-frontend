@@ -8,3 +8,10 @@ export function getAdverts(targetAdverts) {
     return response.data.adverts;
   });
 }
+
+export function setAdvert(advert) {
+  advert.price = +advert.price;
+  return Axios.post(`${SESSION_API_URL}/adverts`, advert).then(response => {
+    return response.data.advert;
+  });
+}

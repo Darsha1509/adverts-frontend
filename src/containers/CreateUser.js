@@ -5,19 +5,9 @@ import  UserCreateForm  from "../components/UserCreateForm";
 import { setUser } from "../actions/userAction";
 
 class CreateUser extends React.Component {
-  /* componentDidMount() {
-    this.props.setUser();
-  } */
-
-  /* componentDidUpdate(prevProps, prevState) {
-    console.log("props didUpdate ==>", this.props);
-  } */
-
   render() {
-    const { loading, error, users, setUser } = this.props;
-
+    const { loading, error, user, setUser } = this.props;
     let content = null;
-
     if (loading) {
       content = <div>Loading...</div>;
     } else if (error) {
@@ -26,18 +16,18 @@ class CreateUser extends React.Component {
 
     return (
       <div className={"content_container"}>
-        <UserCreateForm users={users} setUser={setUser} />
+        <UserCreateForm user={user} setUser={setUser} />
         {content}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ Users }) => {
   return {
-    loading: users.loading,
-    error: users.error,
-    users: users.items
+    loading: Users.user.loading,
+    error: Users.user.error,
+    user: Users.user.data
   };
 };
 

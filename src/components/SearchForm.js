@@ -1,4 +1,5 @@
 import React from 'react';
+import CATEGORIES from '../constants';
 
 class SearchForm extends React.Component {
   state = {};
@@ -67,19 +68,9 @@ class SearchForm extends React.Component {
             value={description}
           />
           <select value={category} onChange={this.handleCategory}>
-            <option>Select category</option>
-            <option>The property</option>
-            <option>Auto and transport</option>
-            <option>Equipment</option>
-            <option>Fashion and Style</option>
-            <option>Everything for children and mothers</option>
-            <option>Housing</option>
-            <option>Repair and construction</option>
-            <option>Garden</option>
-            <option>Hobby, sport and tourism</option>
-            <option>Wedding, business and study</option>
-            <option>Services</option>
-            <option>Other</option>
+            {CATEGORIES.map((cat, index) => {
+              return (<option key={index}>{cat}</option>)
+            })}
           </select>
           <p>Sort by:</p>
           <select value={sort} onChange={this.handleSort}>

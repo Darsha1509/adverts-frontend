@@ -1,12 +1,15 @@
 import React from "react";
+import faker from 'faker';
+
+let content = null;
 
 class UserCreateForm extends React.Component {
   state = {
-    username: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: ""
+    username: faker.internet.userName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email: faker.internet.email().toLowerCase(),
+    phone: faker.phone.phoneNumber('+375 29 ### ## ##')
   };
 
   handleChange = e => {
@@ -14,16 +17,18 @@ class UserCreateForm extends React.Component {
     this.setState({ [id]: value });
   };
 
-
   onSubmit = e => {
     e.preventDefault();
     this.props.setUser(this.state);
+    if (this.props.user) {
+      content = <div>User successfully created:)</div>
+    }
   };
 
   render() {
     const { username, firstName, lastName, email, phone } = this.state;
-    const {users} = this.props;
     return (
+      <div>
         <form className="filter">
           <h5>Create User</h5>
           <input
@@ -67,6 +72,8 @@ class UserCreateForm extends React.Component {
             value={phone}/>
           <button className="add__btn" onClick={this.onSubmit}>SUBMIT</button>
         </form>
+        {content}
+      </div>
     );
   }
 }

@@ -9,10 +9,6 @@ class Users extends React.Component {
     this.props.getUsers();
   }
 
-  /* componentDidUpdate(prevProps, prevState) {
-    console.log("props didUpdate ==>", this.props);
-  } */
-
   render() {
     const { loading, error, users} = this.props;
 
@@ -33,11 +29,11 @@ class Users extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ Users }) => {
   return {
-    loading: users.loading,
-    error: users.error,
-    users: users.items
+    loading: Users.users.loading,
+    error: Users.users.error,
+    users: Users.users.data
   };
 };
 

@@ -3,7 +3,6 @@ import {SESSION_API_URL} from "../../constants";
 
 export function setUser(user) {
   return Axios.post(`${SESSION_API_URL}/users`, user).then((response) => {
-    console.log(`User ${response.data.username} successfully created`);
     return response.data.user;
   });
 }

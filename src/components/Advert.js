@@ -8,7 +8,7 @@ class Advert extends React.Component {
         <p className={"adverts_style"}>
           Title: <span className={"normal_font"}>{advert.title}</span>
         </p>
-        <p className={"adverts_style"}>
+        <p className="adverts_style">
           Created: <span className={"normal_font"}>{advert.created}</span>
         </p>
         <p className={"adverts_style"}>

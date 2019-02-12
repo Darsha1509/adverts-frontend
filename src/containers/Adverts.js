@@ -20,6 +20,7 @@ class Adverts extends React.Component {
     let content = null;
 
     if (loading) {
+      console.log(loading);
       content = <div>Loading...</div>;
     } else if (error) {
       content = <div style={{ color: "red" }}>{error.message}</div>;
@@ -35,11 +36,11 @@ class Adverts extends React.Component {
   }
 }
 
-const mapStateToProps = ({ adverts }) => {
+const mapStateToProps = ({ Adverts }) => {
   return {
-    loading: adverts.loading,
-    error: adverts.error,
-    adverts: adverts.items
+    loading: Adverts.adverts.loading,
+    error: Adverts.adverts.error,
+    adverts: Adverts.adverts.data
   };
 };
 

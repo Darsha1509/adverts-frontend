@@ -15,6 +15,8 @@
     "redux-thunk": "2.3.0"
   },
   "scripts": {
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -32,7 +34,9 @@
   "devDependencies": {
     "eslint-config-prettier": "4.0.0",
     "eslint-plugin-prettier": "3.0.1",
+    "faker": "^4.1.0",
     "prettier": "1.16.4",
+    "react-styleguidist": "^8.0.6",
     "redux-logger": "3.0.6"
   },
   "proxy": "http://localhost:3000"

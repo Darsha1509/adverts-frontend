@@ -3,6 +3,6 @@ import {usersReducer} from "./users";
 import {advertsReducer} from "./adverts";
 
 export const rootReducer = combineReducers({
-  adverts: advertsReducer,
-  users: usersReducer
+  Adverts: advertsReducer,
+  Users: usersReducer
 });
