@@ -6,9 +6,11 @@ export default function PageTitle(props) {
   const { className, ...otherProps } = props;
 
   return (
-    <h1 className={`PageTitle ${className || ""}`} {...otherProps}>
+    <div className={`PageTitle ${className || ""}`}>
+    <h1 className="title" {...otherProps}>
       {props.children}
     </h1>
+    </div>
   );
 }
 

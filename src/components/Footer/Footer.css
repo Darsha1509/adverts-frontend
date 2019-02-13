@@ -1,0 +1,12 @@
+.Footer {
+    background: #F1F3F5;
+
+    font-family: Open Sans;
+    line-height: normal;
+    font-size: 14px;
+
+    color: #828282;
+
+    display: flex;
+    justify-content: center;
+}

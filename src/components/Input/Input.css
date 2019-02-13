@@ -1,0 +1,19 @@
+.Input {
+    margin-bottom: 12px;
+    width: 240px;
+    height: 32px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    padding-left: 10px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 14px;
+
+    color: #BDBDBD;
+}

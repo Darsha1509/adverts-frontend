@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import "../App.css";
-import { UsersList } from "../components/UsersList";
-import { getUsers } from "../actions/userAction";
+import "../../App.css";
+import { UsersList } from "../../components/UsersList";
+import { getUsers, deleteUser } from "../../actions/userAction";
+import PageTitle from "../../components/PageTitle";
+import "./Users.css";
 
 class Users extends React.Component {
   componentWillMount() {
@@ -10,7 +12,7 @@ class Users extends React.Component {
   }
 
   render() {
-    const { loading, error, users} = this.props;
+    const { loading, error, users, deleteUser } = this.props;
 
     let content = null;
 
@@ -21,9 +23,12 @@ class Users extends React.Component {
     }
 
     return (
-      <div className={"container"}>
-        {content}
-        {users ? <UsersList users={users} /> : null}
+      <div className="Users">
+        <PageTitle>Users</PageTitle>
+        <div className="Users-content">
+          {content}
+          {users && !loading ? <UsersList users={users} deleteUser={deleteUser} /> : null}
+        </div>
       </div>
     );
   }
@@ -39,7 +44,8 @@ const mapStateToProps = ({ Users }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUsers: () => dispatch(getUsers())
+    getUsers: () => dispatch(getUsers()),
+    deleteUser: pathId => dispatch(deleteUser(pathId))
   };
 };
 

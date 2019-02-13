@@ -1,20 +1,18 @@
 import React from "react";
+import EditAdvertForm from "../../components/EditAdvertForm";
+import { getAdvert, updateAdvert } from "../../actions/advertAction";
+import { getUsers } from "../../actions/userAction";
 import { connect } from "react-redux";
-import "../App.css";
-import AdvertCreateForm from "../components/AdvertCreateForm/index";
-import { setAdvert } from "../actions/advertAction";
-import { getUsers } from "../actions/userAction";
 
-class CreateAdvert extends React.Component {
-  componentDidMount() {
+class EditUser extends React.Component {
+  componentWillMount() {
+    this.props.getAdvert(this.props.match.params.id);
     this.props.getUsers();
   }
 
   render() {
-    const { loading, error, advert, setAdvert, users } = this.props;
-
+    const { advert, loading, error, updateAdvert, users } = this.props;
     let content = null;
-
     if (loading) {
       content = <div>Loading...</div>;
     } else if (error) {
@@ -22,8 +20,14 @@ class CreateAdvert extends React.Component {
     }
 
     return (
-      <div className="content_container">
-        <AdvertCreateForm advert={advert} users={users} setAdvert={setAdvert} />
+      <div>
+        {!loading ?
+          <EditAdvertForm
+            advert={advert}
+            users={users}
+            updateAdvert={updateAdvert}
+          />
+         : null}
         {content}
       </div>
     );
@@ -41,7 +45,9 @@ const mapStateToProps = ({ Adverts, Users }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setAdvert: advert => dispatch(setAdvert(advert)),
+    getAdvert: pathId => dispatch(getAdvert(pathId)),
+    updateAdvert: (pathId, newAdvert) =>
+      dispatch(updateAdvert(pathId, newAdvert)),
     getUsers: () => dispatch(getUsers())
   };
 };
@@ -49,4 +55,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateAdvert);
+)(EditUser);

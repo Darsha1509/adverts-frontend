@@ -3,8 +3,39 @@
     justify-content: center;
     height: 49px;
     align-items: center;
+    border-bottom: 2px solid #F2F2F2;
 }
 
 .menu {
-    height: 20px;
+    display: flex;
+    height: 100%;
+}
+
+.menu-item-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item {
+    margin-right: 24px;
+
+    text-decoration: none;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 14px;
+
+    color: #828282;
+}
+
+.menu-item-container:hover {
+    border-bottom-color: #2D9CDB;
+}
+
+.menu-item:hover {
+    color: #333333;
 }

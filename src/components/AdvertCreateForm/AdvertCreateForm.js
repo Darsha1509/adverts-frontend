@@ -1,17 +1,21 @@
 import React from "react";
-import CATEGORIES from "../constants";
-import faker from 'faker';
+import CATEGORIES from "../../constants/index";
+import Input from '../Input';
+import Description from '../Description';
+import Select from '../Select';
+import Button from '../Button';
+import './AdvertCreateForm.css';
 
 let content = null;
 
 class AdvertCreateForm extends React.Component {
   state = {
-    title: faker.commerce.productName(),
-    description: faker.commerce.productAdjective(),
+    title: "",
+    description: "",
     category: "",
     author: "",
-    price: faker.commerce.price()
-  }
+    price: ""
+  };
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -29,9 +33,6 @@ class AdvertCreateForm extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.setAdvert(this.state);
-    if (this.props.advert) {
-      content = <div>Advert successfully created:)</div>;
-    }
   };
 
   render() {
@@ -39,29 +40,27 @@ class AdvertCreateForm extends React.Component {
     const { title, description, category, price, author } = this.state;
     return (
       <div>
-        <form className="filter">
-          <h5>Create Advert</h5>
-          <input
+        <form className="AdvertCreateForm">
+          <h5 className="AdvertCreateForm-title">Create Advert</h5>
+          <Input
             name="title"
             type="text"
-            className="search_field"
             onChange={this.handleChange}
             placeholder="title"
             value={title}
           />
-          <textarea
+          <Description
             name="description"
-            className="search_field"
             onChange={this.handleChange}
             placeholder="description"
             value={description}
           />
-          <select value={category} onChange={this.handleCategoryChange}>
+          <Select value={category} onChange={this.handleCategoryChange}>
             {CATEGORIES.map((cat, index) => {
               return <option key={index}>{cat}</option>;
             })}
-          </select>
-          <select value={author} onChange={this.handleAuthorChange}>
+          </Select>
+          <Select value={author} onChange={this.handleAuthorChange}>
             {users.map((user, index) => {
               return (
                 <option key={index} value={user._id}>
@@ -69,18 +68,17 @@ class AdvertCreateForm extends React.Component {
                 </option>
               );
             })}
-          </select>
-          <input
+          </Select>
+          <Input
             name="price"
             type="text"
-            className="search_field"
             onChange={this.handleChange}
             placeholder="price"
             value={price}
           />
-          <button className="add__btn" onClick={this.onSubmit}>
+          <Button onClick={this.onSubmit}>
             SUBMIT
-          </button>
+          </Button>
         </form>
         {content}
       </div>
@@ -88,4 +86,4 @@ class AdvertCreateForm extends React.Component {
   }
 }
 
-export { AdvertCreateForm };
+export default AdvertCreateForm;

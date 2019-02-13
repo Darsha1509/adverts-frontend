@@ -1,0 +1,9 @@
+.User {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.user-delete-button {
+    width: 70px;
+}

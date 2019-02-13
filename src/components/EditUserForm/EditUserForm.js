@@ -1,16 +1,22 @@
 import React from "react";
-import faker from 'faker';
+import Input from '../Input/index';
+import './EditUserForm.css';
+import Button from '../Button/index';
 
 let content = null;
 
-class UserCreateForm extends React.Component {
-  state = {
-    username: faker.internet.userName(),
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    email: faker.internet.email().toLowerCase(),
-    phone: faker.phone.phoneNumber('+375 29 ### ## ##')
-  };
+export default class UserCreateForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state =  {
+      username: this.props.user.username,
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      email: this.props.user.email,
+      phone: this.props.user.phone
+    };
+  }
+
 
   handleChange = e => {
     const { id, value } = e.currentTarget;
@@ -19,63 +25,53 @@ class UserCreateForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.setUser(this.state);
-    if (this.props.user) {
-      content = <div>User successfully created:)</div>
-    }
+    this.props.updateUser(this.props.user._id, this.state);
   };
 
   render() {
     const { username, firstName, lastName, email, phone } = this.state;
     return (
       <div>
-        <form className="filter">
-          <h5>Create User</h5>
-          <input
+        <form className="EditUserForm">
+          <h5 className="EditUserForm-title">Edit User</h5>
+          <Input
             id="username"
             type="text"
-            className="search_field"
             onChange={this.handleChange}
-            placeholder="username"
+            placeholder="Username"
             value={username}
           />
-          <input
+          <Input
             id="firstName"
             type="text"
-            className="search_field"
             onChange={this.handleChange}
             placeholder="First Name"
             value={firstName}
           />
-          <input
+          <Input
             id="lastName"
             type="text"
-            className="search_field"
             onChange={this.handleChange}
             placeholder="Last Name"
             value={lastName}
           />
-          <input
+          <Input
             id="email"
             type="text"
-            className="search_field"
             onChange={this.handleChange}
             placeholder="email"
             value={email}
           />
-          <input
+          <Input
             id="phone"
             type="text"
-            className="search_field"
             onChange={this.handleChange}
             placeholder="phone"
             value={phone}/>
-          <button className="add__btn" onClick={this.onSubmit}>SUBMIT</button>
+          <Button onClick={this.onSubmit}>SUBMIT</Button>
         </form>
         {content}
       </div>
     );
   }
 }
-
-export default UserCreateForm;

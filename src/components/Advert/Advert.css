@@ -1,0 +1,10 @@
+.Advert {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 20px;
+}
+
+.advert-button {
+   margin-top: 10px;
+   width: 70px;
+}

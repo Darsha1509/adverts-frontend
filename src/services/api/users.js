@@ -12,3 +12,21 @@ export function getUsers() {
     return response.data.users;
   });
 }
+
+export function getUser(pathId) {
+  return Axios.get(`${SESSION_API_URL}/users/${pathId}`).then((response) => {
+    return response.data.user;
+  });
+}
+
+export function updateUser(pathId, newUser) {
+  return Axios.patch(`${SESSION_API_URL}/users/${pathId}`, newUser).then((response) => {
+    return response.data.updatedUser;
+  });
+}
+
+export function deleteUser(pathId) {
+  return Axios.delete(`${SESSION_API_URL}/users/${pathId}`).then((response) => {
+    return response.data.users;
+  });
+}

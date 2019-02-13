@@ -1,0 +1,8 @@
+.Adverts {
+    width: 100%;
+}
+
+.Adverts-container {
+    display: flex;
+    justify-content: center;
+}

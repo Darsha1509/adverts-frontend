@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import "../App.css";
-import  UserCreateForm  from "../components/UserCreateForm";
-import { setUser } from "../actions/userAction";
+import "../../App.css";
+import  UserCreateForm  from "../../components/UserCreateForm/index";
+import { setUser } from "../../actions/userAction";
+import './CreateUser.css'
 
 class CreateUser extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class CreateUser extends React.Component {
     }
 
     return (
-      <div className={"content_container"}>
+      <div className="CreateUser">
         <UserCreateForm user={user} setUser={setUser} />
         {content}
       </div>

@@ -1,0 +1,18 @@
+.EditAdvertForm {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-right: 100px;
+}
+
+.EditAdvertForm-title {
+    margin-bottom: 8px;
+
+    font-family: Open Sans;
+    line-height: normal;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    color: #828282;
+}

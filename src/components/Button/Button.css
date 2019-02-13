@@ -1,0 +1,15 @@
+.Button {
+    width: 240px;
+    height: 40px;
+    background: #2D9CDB;
+    border-radius: 4px
+}
+
+.Button-textStyle {
+    font-family: Open Sans;
+    line-height: normal;
+    font-size: 14px;
+
+    color: #FFFFFF;
+}
+
